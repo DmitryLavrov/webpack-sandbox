@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -10,6 +11,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "file-loader": "^6.2.0",
     "webpack": "^5.38.1",
     "webpack-cli": "^4.7.2"
   }

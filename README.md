@@ -22,3 +22,41 @@ default mode: production
 npx webpack
 npx webpack --mode development
 ```
+### webpack.config.js
+```js
+module.exports = {
+  mode: "development"
+}
+```
+### file-loader
+```shell
+npm i -D file-loader
+```
+webpack.config.js
+```js
+module.exports = {
+  mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpe?g|gif|ico)$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: 'images',
+            name: '[name]-[sha1:hash:7].[ext]'
+          }
+        }]
+      }
+    ]
+  }
+}
+```
+index.js
+```js
+import img from './react.png'
+
+const el = document.createElement('img')
+el.src = img
+document.body.appendChild(el)
+```
