@@ -3,6 +3,14 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: 'babel-loader'
+        }]
+      },
+
+      {
         test: /\.(png|jpe?g|gif|ico)$/,
         use: [{
           loader: 'file-loader',
@@ -12,6 +20,7 @@ module.exports = {
           }
         }]
       },
+
       {
         test: /\.(ttf|otf|eot|woff|woff2)$/,
         use: [{
