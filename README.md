@@ -99,3 +99,44 @@ const App = () => <h1>Hello!!</h1>
 
 ReactDom.render(<App/>, document.getElementById('root'))
 ```
+### css-loader + style-loader
+```shell
+npm i -D css-loader style-loader
+```
+index.js
+```js
+import './main.css'
+```
+webpack.config.js
+```js
+// ...
+    {
+    test: /\.css$/,
+      use: [
+        {loader: 'style-loader'},
+        {loader: 'css-loader'}
+      ]
+    }
+// ...
+```
+### sass-loader
+```shell
+npm i -D node-sass sass-loader
+```
+index.js
+```js
+import './main.scss'
+```
+webpack.config.js
+```js
+// ...
+    {
+      test: /\.s[ca]ss$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'},
+          {loader: 'sass-loader'}
+        ]
+    }
+// ...
+```

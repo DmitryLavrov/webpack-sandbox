@@ -30,6 +30,23 @@ module.exports = {
             name: '[name].[ext]'
           }
         }]
+      },
+
+      {
+        test: /\.css$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'}
+        ]
+      },
+
+      {
+        test: /\.s[ca]ss$/,
+        use: [
+          {loader: 'style-loader'},
+          {loader: 'css-loader'},
+          {loader: 'sass-loader'}
+        ]
       }
 
     ]
