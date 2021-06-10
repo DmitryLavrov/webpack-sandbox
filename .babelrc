@@ -7,9 +7,8 @@
         "modules": false,
         "debug": true,
         "targets": [
-          "last 22 edge versions",
-          "last 22 chrome versions",
-          "last 3 ie versions"
+          "last 2 edge versions",
+          "last 2 chrome versions"
         ]
       }
     ],

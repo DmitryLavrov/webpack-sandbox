@@ -1,3 +1,7 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+
 module.exports = {
   mode: "development",
   module: {
@@ -5,9 +9,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [{
-          loader: 'babel-loader'
-        }]
+        use: 'babel-loader'
       },
 
       {
@@ -34,21 +36,24 @@ module.exports = {
 
       {
         test: /\.css$/,
-        use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader'}
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
 
       {
         test: /\.s[ca]ss$/,
-        use: [
-          {loader: 'style-loader'},
-          {loader: 'css-loader'},
-          {loader: 'sass-loader'}
-        ]
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       }
 
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Cool release',
+      buildTime: new Date().toISOString(),
+      template: 'public/index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'main-[fullhash:7].css'
+    })
+  ]
 }

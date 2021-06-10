@@ -140,3 +140,54 @@ webpack.config.js
     }
 // ...
 ```
+### html-webpack-plugin (with templates)
+```shell
+npm i -D html-webpack-plugin
+```
+webpack.config.js
+```js
+// ...
+    plugins: [
+      new HtmlWebpackPlugin({
+        title: 'Cool release',
+        buildTime: new Date().toISOString(),
+        template: 'public/index.html'
+      })
+    ]
+// ...
+```
+index.html
+```html
+<!-- ... -->
+<title><%= htmlWebpackPlugin.options.title %></title>
+<!-- ... -->
+<p>Build time: <%= htmlWebpackPlugin.options.buildTime %></p>
+<!-- ... -->
+```
+### mini-css-extract-plugin
+```shell
+npm i -D mini-css-extract-plugin
+```
+webpack.config.js
+```js
+// ...
+module: {
+    rules: [
+// ...
+      {
+        test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+    
+      {
+        test: /\.s[ca]ss$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+      }
+// ...
+    plugins: [
+// ...
+    new MiniCssExtractPlugin({
+      filename: 'main-[hash:7].css'
+    })
+// ...
+```
