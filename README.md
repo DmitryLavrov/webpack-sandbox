@@ -212,3 +212,73 @@ webpack.config.js
   }
 // ...
 ```
+## Production and development modes
+```shell
+npm i -D mini-css-extract-plugin
+```
+package.json
+```json
+// ...
+  "scripts": {
+    "start": "webpack serve",
+    "build": "start --env.mode=production"
+  }
+// ...
+```
+webpack.config.js
+```js
+// ...
+module.exports = (env = {}) => {
+  console.log('env:', env)
+
+  const {mode = 'development'} = env
+
+  const isProd = mode === 'production'
+  const isDev = mode === 'development'
+
+  const getStyleLoaders = () => {
+    return [
+      isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+      'css-loader'
+    ]
+  }
+
+  const getPlugins = () => {
+    const plugins = [
+      new HtmlWebpackPlugin({
+        title: 'Cool release',
+        buildTime: new Date().toISOString(),
+        template: 'public/index.html'
+      })
+    ]
+
+    if (isProd) {
+      plugins.push(new MiniCssExtractPlugin({
+        filename: 'main-[fullhash:7].css'
+      }))
+    }
+
+    return plugins
+  }
+
+  return {
+
+    mode: isProd ? 'production' : isDev && 'development',
+
+    output: {
+      filename: isProd ? 'main-[hash:8].js' : undefined
+    },
+
+    module: {
+// ...
+        {
+          test: /\.css$/,
+          use: getStyleLoaders()
+        },
+
+        {
+          test: /\.s[ca]ss$/,
+          use: [...getStyleLoaders(), 'sass-loader']
+        }
+// ...
+```
