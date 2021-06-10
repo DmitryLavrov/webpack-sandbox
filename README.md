@@ -1,5 +1,5 @@
 # webpack-sandbox
-### Init
+## Init
 ```shell
 mkdir webpack-sandbox
 cd webpack-sandbox/
@@ -8,7 +8,7 @@ npm init -y
 
 git init
 ```
-### WebPack
+## WebPack
 Install [WebPack](https://webpack.js.org/guides/getting-started/) 
 ```shell
 npm install --save-dev webpack webpack-cli
@@ -22,13 +22,13 @@ default mode: production
 npx webpack
 npx webpack --mode development
 ```
-### webpack.config.js
+## webpack.config.js
 ```js
 module.exports = {
   mode: "development"
 }
 ```
-### package.json
+## package.json
 use command `npm start`
 ```json
 // ...
@@ -37,7 +37,7 @@ use command `npm start`
   },
 // ...
 ```
-### file-loader
+## file-loader
 ```shell
 npm i -D file-loader
 ```
@@ -69,7 +69,7 @@ const el = document.createElement('img')
 el.src = img
 document.body.appendChild(el)
 ```
-### babel-loader
+## babel-loader
 ```shell
 npm i -D babel-loader
 npm i -D @babel/preset-env
@@ -99,7 +99,7 @@ const App = () => <h1>Hello!!</h1>
 
 ReactDom.render(<App/>, document.getElementById('root'))
 ```
-### css-loader + style-loader
+## css-loader + style-loader
 ```shell
 npm i -D css-loader style-loader
 ```
@@ -119,7 +119,7 @@ webpack.config.js
     }
 // ...
 ```
-### sass-loader
+## sass-loader
 ```shell
 npm i -D node-sass sass-loader
 ```
@@ -140,7 +140,7 @@ webpack.config.js
     }
 // ...
 ```
-### html-webpack-plugin (with templates)
+## html-webpack-plugin (with templates)
 ```shell
 npm i -D html-webpack-plugin
 ```
@@ -164,7 +164,7 @@ index.html
 <p>Build time: <%= htmlWebpackPlugin.options.buildTime %></p>
 <!-- ... -->
 ```
-### mini-css-extract-plugin
+## mini-css-extract-plugin
 ```shell
 npm i -D mini-css-extract-plugin
 ```
@@ -189,5 +189,26 @@ module: {
     new MiniCssExtractPlugin({
       filename: 'main-[hash:7].css'
     })
+// ...
+```
+## webpack-dev-server
+```shell
+npm i -D mini-css-extract-plugin
+```
+package.json
+```json
+// ...
+  "scripts": {
+    "start": "webpack serve",
+    "build": "start"
+  }
+// ...
+```
+webpack.config.js
+```js
+// ...
+  devServer: {
+    open: true
+  }
 // ...
 ```

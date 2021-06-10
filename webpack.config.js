@@ -55,5 +55,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'main-[fullhash:7].css'
     })
-  ]
+  ],
+  devServer: {
+    open: true
+  }
 }
